@@ -37,7 +37,7 @@ function TodoPage() {
       </a>
       <main className="max-w-4xl mx-auto p-6">
         <h1 className="text-3xl font-semibold text-center mb-6 text-white">
-          Todo App
+          Todo App test
         </h1>
         <p className="text-gray-200 text-center my-2">
           data is reset every 30 minutes
