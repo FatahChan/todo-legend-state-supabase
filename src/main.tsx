@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
@@ -32,6 +33,7 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <RouterProvider router={router} />
+      <Toaster />
     </StrictMode>,
   );
 }

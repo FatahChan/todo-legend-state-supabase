@@ -1,7 +1,7 @@
 create table todos (
   id uuid default gen_random_uuid() primary key,
   -- user_id uuid references auth.users not null,
-  text text,
+  text text not null check (length(trim(text)) > 0),
   done boolean default false,
   created_at timestamptz default now(),
   updated_at timestamptz default now(),

@@ -51,7 +51,7 @@ export default defineConfig({
 
       pwaAssets: {},
       devOptions: {
-        enabled: true,
+        enabled: false,
       },
     }),
   ],

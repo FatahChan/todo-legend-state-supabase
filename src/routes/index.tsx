@@ -7,6 +7,7 @@ import { addTodo, deleteTodo, todos$, toggleDone } from "@/lib/SupaLegend";
 import { cn } from "@/lib/utils";
 import { use$ } from "@legendapp/state/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/")({
   component: TodoPage,
@@ -25,7 +26,7 @@ function TodoPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#6B46C1] via-[#4F46E5] to-[#00d4ff] via-opacity-100 from-opacity-95 to-opacity-70">
+    <div className="min-h-screen bg-gradient-to-br from-[#6B46C1] via-primary to-[#00d4ff] via-opacity-100 from-opacity-95 to-opacity-70">
       <a
         href="https://github.com/FatahChan/todo-legend-state-supabase"
         className="github-corner"
@@ -44,10 +45,15 @@ function TodoPage() {
         </p>
         <div className="w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-center shadow-md rounded-lg p-6 mb-6">
           <form
-            className="mb-4 flex items-center"
+            className="flex items-center justify-center gap-4"
             onSubmit={(e) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
+              const input = formData.get("todo-name");
+              if (!input) {
+                toast.error("Please enter a task name");
+                return;
+              }
               try {
                 addTodo(formData.get("todo-name") as string);
                 e.currentTarget.reset();
@@ -64,7 +70,7 @@ function TodoPage() {
             />
             <Button
               type="submit"
-              className="ml-4 w-1/6 bg-[#4F46E5] hover:bg-[#4338CA] text-white py-2 px-3 rounded-md shadow-md"
+              className="cursor-pointer min-w-fit w-1/6 bg-primary hover:bg-primary/80 text-primary-foreground py-2 px-3 rounded-md shadow-md"
             >
               Submit
             </Button>
@@ -86,7 +92,7 @@ function TodoPage() {
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteTodo(todo.id)}
-                    className="text-gray-400 hover:text-red-500 transition-colors"
+                    className="cursor-pointer text-gray-400 hover:text-red-500 transition-colors"
                   >
                     <TrashIcon className="h-5 w-5" />
                   </Button>
