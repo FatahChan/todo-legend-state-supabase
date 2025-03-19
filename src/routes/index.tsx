@@ -12,7 +12,10 @@ const TodoPage = observer(() => {
     <div className="bg-gray-100 dark:bg-gray-800 min-h-screen">
       <main className="max-w-4xl mx-auto p-6">
         <h1 className="text-3xl font-semibold text-center mb-6">Todo App</h1>
-        <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 mb-6">
+        <p className="text-gray-400 text-center my-2">
+          data is reset every 30 minutes
+        </p>
+        <div className="w-full bg-white text-center dark:bg-gray-900 shadow-md rounded-lg p-6 mb-6">
           <form
             className="mb-4 flex items-center"
             onSubmit={(e) => {
