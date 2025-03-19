@@ -1,5 +1,5 @@
 {
-  "name": "legend-state-supabase",
+  "name": "todo-legend-state-supabase",
   "private": true,
   "type": "module",
   "scripts": {
