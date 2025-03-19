@@ -17,6 +17,9 @@ A modern todo application built with Legend State for state management and Supab
 - 🎯 Optimistic updates
 - 🏃‍♂️ Fast and responsive
 - 🔒 Data persistence with Supabase
+- 🛜 Offline-first
+- 📱 PWA ready - installable as a native app
+- 🌐 Works on all devices
 
 ## Tech Stack
 
