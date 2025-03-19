@@ -18,7 +18,7 @@ const customSynced = configureSynced(syncedSupabase, {
   persist: {
     plugin: observablePersistIndexedDB({
       databaseName: "Legend",
-      version: 1,
+      version: 2,
       tableNames: ["todos"],
     }),
   },
@@ -35,8 +35,7 @@ export const todos$ = observable(
   customSynced({
     supabase,
     collection: "todos",
-    select: (from) =>
-      from.select("id,counter,text,done,created_at,updated_at,deleted"),
+    select: (from) => from.select("id,text,done,created_at,updated_at,deleted"),
     actions: ["read", "create", "update", "delete"],
     realtime: true,
     // Persist data and pending changes locally

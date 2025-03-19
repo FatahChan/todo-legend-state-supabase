@@ -1,8 +1,7 @@
 import { GitHubCorner } from "@/components/github-corner";
-import { CheckIcon } from "@/components/icons/check-icon";
 import { TrashIcon } from "@/components/icons/trash-icon";
-import { UndoIcon } from "@/components/icons/undo-icon";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { addTodo, deleteTodo, todos$, toggleDone } from "@/lib/SupaLegend";
 import { cn } from "@/lib/utils";
@@ -26,7 +25,7 @@ function TodoPage() {
   });
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-[#6B46C1] via-[#4F46E5] to-[#00d4ff] via-opacity-100 from-opacity-95 to-opacity-70">
       <a
         href="https://github.com/FatahChan/todo-legend-state-supabase"
         className="github-corner"
@@ -37,11 +36,13 @@ function TodoPage() {
         <GitHubCorner />
       </a>
       <main className="max-w-4xl mx-auto p-6">
-        <h1 className="text-3xl font-semibold text-center mb-6">Todo App</h1>
-        <p className="text-gray-400 text-center my-2">
+        <h1 className="text-3xl font-semibold text-center mb-6 text-white">
+          Todo App
+        </h1>
+        <p className="text-gray-200 text-center my-2">
           data is reset every 30 minutes
         </p>
-        <div className="w-full bg-white text-center dark:bg-gray-900 shadow-md rounded-lg p-6 mb-6">
+        <div className="w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-center shadow-md rounded-lg p-6 mb-6">
           <form
             className="mb-4 flex items-center"
             onSubmit={(e) => {
@@ -63,44 +64,36 @@ function TodoPage() {
             />
             <Button
               type="submit"
-              className="ml-4 w-1/6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded-md shadow-md"
+              className="ml-4 w-1/6 bg-[#4F46E5] hover:bg-[#4338CA] text-white py-2 px-3 rounded-md shadow-md"
             >
               Submit
             </Button>
           </form>
           <ul className="divide-y divide-gray-200 dark:divide-gray-700">
             {todos.map((todo) => (
-              <li
-                key={todo.id}
-                className="py-4 flex justify-between items-center"
-              >
+              <li key={todo.id} className="py-4 flex items-center gap-3">
                 <span
                   className={cn(
-                    "text-gray-800 dark:text-gray-100",
-                    todo.done && "line-through",
+                    "flex-1 text-gray-800 dark:text-gray-100 text-left",
+                    todo.done &&
+                      "line-through text-gray-400 dark:text-gray-500",
                   )}
                 >
                   {todo.text}
                 </span>
-                <div className="flex space-x-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => toggleDone(todo.id)}
-                  >
-                    {todo.done ? (
-                      <UndoIcon className="h-5 w-5 text-yellow-500" />
-                    ) : (
-                      <CheckIcon className="h-5 w-5 text-green-500" />
-                    )}
-                  </Button>
+                <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteTodo(todo.id)}
+                    className="text-gray-400 hover:text-red-500 transition-colors"
                   >
-                    <TrashIcon className="h-5 w-5 text-red-500" />
+                    <TrashIcon className="h-5 w-5" />
                   </Button>
+                  <Checkbox
+                    checked={todo.done || false}
+                    onCheckedChange={() => toggleDone(todo.id)}
+                  />
                 </div>
               </li>
             ))}

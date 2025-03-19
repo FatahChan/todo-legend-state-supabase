@@ -93,7 +93,7 @@ pnpx supabase db reset
 pnpx supabase stop
 
 # Generate database types (if using TypeScript)
-pnpx supabase gen types typescript --local > src/types/supabase.ts
+pnpx supabase gen types typescript --local > src/lib/database.types.ts
 ```
 
 Access local Supabase services:

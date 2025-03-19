@@ -36,7 +36,6 @@ export type Database = {
     Tables: {
       todos: {
         Row: {
-          counter: number;
           created_at: string | null;
           deleted: boolean | null;
           done: boolean | null;
@@ -45,7 +44,6 @@ export type Database = {
           updated_at: string | null;
         };
         Insert: {
-          counter?: number;
           created_at?: string | null;
           deleted?: boolean | null;
           done?: boolean | null;
@@ -54,7 +52,6 @@ export type Database = {
           updated_at?: string | null;
         };
         Update: {
-          counter?: number;
           created_at?: string | null;
           deleted?: boolean | null;
           done?: boolean | null;
@@ -160,4 +157,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never;
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database;
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never;

@@ -21,7 +21,8 @@ export default defineConfig({
         short_name: "Todo Legend State Supabase",
         description:
           "A modern todo application built with Legend State for state management and sync layer, and Supabase as the backend.",
-        theme_color: "#ffffff",
+        theme_color: "#4F46E5",
+        background_color: "#4F46E5",
         icons: [
           {
             src: "pwa-64x64.png",
