@@ -2,6 +2,13 @@
 
 A modern todo application built with Legend State for state management and Supabase as the backend.
 
+<div align="center">
+
+[![Demo](https://img.shields.io/badge/▶️%20Live%20Demo-todo--legend--state--supabase.vercel.app-blue?style=for-the-badge)](https://todo-legend-state-supabase.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/FatahChan/todo-legend-state-supabase)
+
+</div>
+
 ## Features
 
 - ⚡️ Real-time todo updates
