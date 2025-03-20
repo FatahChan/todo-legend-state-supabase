@@ -30,9 +30,6 @@ SELECT cron.schedule(
     -- Delete all existing todos
     DELETE FROM todos;
     
-    -- Reset the counter sequence
-    ALTER SEQUENCE todos_counter_seq RESTART WITH 1;
-    
     -- Insert default todos
     INSERT INTO todos (text, done, id) VALUES
     (''Buy groceries'', false, ''194c94ea-8330-4c9a-8ca7-0da2ef5c2e30''),
